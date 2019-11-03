@@ -26,7 +26,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }//додає елемент у кінець колекції
 
     public ImmutableList add(int index, Object e) {
-        if (index >= this.length | index < 0) {
+        if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object[] new_list = new Object[this.length + 1];
@@ -53,7 +53,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }//додає масив елементів у кінець колекції
 
     public ImmutableList addAll(int index, Object[] c) {
-        if (index >= this.length | index < 0) {
+        if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object[] new_list = new Object[this.length + c.length];
@@ -70,14 +70,14 @@ public final class ImmutableArrayList implements ImmutableList {
     }// додає масив елементів починаючи з зазначеного індекса, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
 
     public Object get(int index) {
-        if (index >= this.length | index < 0) {
+        if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         return this.lst[index];
     }//повертає елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
 
     public ImmutableList remove(int index) {
-        if (index >= this.length | index < 0) {
+        if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object[] new_list = new Object[this.length - 1];
@@ -91,7 +91,7 @@ public final class ImmutableArrayList implements ImmutableList {
     }//видаляє елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
 
     public ImmutableList set(int index, Object e) {
-        if (index >= this.length | index < 0) {
+        if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object[] new_list = Arrays.copyOf(this.lst, this.length);
@@ -126,13 +126,13 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         if (this.length > 0) {
-            str += this.lst[0];
+            str.append(this.lst[0]);
             for (int i = 1; i < this.length; i++) {
-                str += "," + this.lst[i].toString();
+                str.append(",").append(this.lst[i].toString());
             }
         }
-        return str;
+        return str.toString();
     }//повертає рядок, де через кому відображаютсься елементи колекції
 }

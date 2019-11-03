@@ -1,10 +1,11 @@
 package ua.edu.ucu.collections;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class QueueTest {
-    
+
     @Test
     public void testQueue() {
         Queue queue = new Queue();
@@ -14,5 +15,5 @@ public class QueueTest {
         assertEquals(2, queue.dequeue());
         assertEquals(1, queue.peek());
     }
-    
+
 }
