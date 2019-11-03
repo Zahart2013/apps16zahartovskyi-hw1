@@ -1,6 +1,7 @@
 package ua.edu.ucu.collections;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class StackTest {
@@ -14,5 +15,5 @@ public class StackTest {
         assertEquals(1, stack.pop());
         assertEquals(2, stack.peek());
     }
-    
+
 }

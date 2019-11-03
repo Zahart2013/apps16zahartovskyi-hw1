@@ -5,22 +5,22 @@ import ua.edu.ucu.collections.immutable.ImmutableLinkedList;
 public class Stack {
     private ImmutableLinkedList lst;
 
-    public Stack(){
+    public Stack() {
         this.lst = new ImmutableLinkedList();
     }
 
-    public Object peek(){
+    public Object peek() {
         return lst.getFirst();
     }
 
-    public Object pop(){
+    public Object pop() {
         Object res = lst.getFirst();
         lst = lst.removeFirst();
         return res;
     }
 
-    public void push(Object e){
+    public void push(Object e) {
         lst = lst.addFirst(e);
     }
-    
+
 }

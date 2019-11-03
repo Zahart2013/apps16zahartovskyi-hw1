@@ -9,10 +9,9 @@ public class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableList add(Object e) {
         ImmutableLinkedList result = new ImmutableLinkedList();
-        if(this.head.value == null){
+        if (this.head.value == null) {
             result.head.value = e;
-        }
-        else{
+        } else {
             Node current_node = this.head;
             result.head.value = this.head.value;
             Node new_node = result.head;
@@ -20,32 +19,31 @@ public class ImmutableLinkedList implements ImmutableList {
             new_node.next = new Node(e);
         }
         return result;
-    }//додає елемент у кінець колекції
+    }
 
     public ImmutableList add(int index, Object e) {
-        if(index < 0){
+        if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
         ImmutableLinkedList result = new ImmutableLinkedList();
         Node current_node = this.head;
-        if(index == 0){
+        if (index == 0) {
             result.head.value = e;
             result.head.next = new Node(this.head.value);
             Node new_node = result.head.next;
             this.copyNodes(current_node, new_node);
-        }
-        else{
+        } else {
             Node new_node = result.head;
             new_node.value = this.head.value;
-            for(int i = 1; i < index; i++){
-                if(current_node.next == null){
+            for (int i = 1; i < index; i++) {
+                if (current_node.next == null) {
                     throw new IndexOutOfBoundsException();
                 }
                 current_node = current_node.next;
                 new_node.next = new Node(current_node.value);
                 new_node = new_node.next;
             }
-            if(current_node.next == null){
+            if (current_node.next == null) {
                 throw new IndexOutOfBoundsException();
             }
             new_node.next = new Node(e);
@@ -53,17 +51,16 @@ public class ImmutableLinkedList implements ImmutableList {
             this.copyNodes(current_node, new_node);
         }
         return result;
-    }//додає елемент до колекції за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    }
 
 
     public ImmutableList addAll(Object[] c) {
         ImmutableLinkedList result = new ImmutableLinkedList();
-        if(this.head.value == null){
+        if (this.head.value == null) {
             Node new_node = new Node();
             this.insertArray(c, new_node);
             result.head = new_node.next;
-        }
-        else{
+        } else {
             Node current_node = this.head;
             result.head.value = this.head.value;
             Node new_node = result.head;
@@ -71,7 +68,7 @@ public class ImmutableLinkedList implements ImmutableList {
             this.insertArray(c, new_node);
         }
         return result;
-    }//додає масив елементів у кінець колекції
+    }
 
     public ImmutableList addAll(int index, Object[] c) {
         if (index < 0) {
@@ -79,16 +76,15 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         ImmutableLinkedList result = new ImmutableLinkedList();
         Node current_node = this.head;
-        if(index == 0){
+        if (index == 0) {
             Node new_node = new Node();
             this.insertArray(c, new_node);
             result.head = new_node.next;
-        }
-        else{
+        } else {
             Node new_node = result.head;
             new_node.value = this.head.value;
-            for(int i = 1; i < index; i++){
-                if(current_node.next == null){
+            for (int i = 1; i < index; i++) {
+                if (current_node.next == null) {
                     throw new IndexOutOfBoundsException();
                 }
                 current_node = current_node.next;
@@ -99,7 +95,7 @@ public class ImmutableLinkedList implements ImmutableList {
             this.copyNodes(current_node, new_node);
         }
         return result;
-    }// додає масив елементів починаючи з зазначеного індекса, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    }
 
     public Object get(int index) {
         if (index < 0) {
@@ -113,7 +109,7 @@ public class ImmutableLinkedList implements ImmutableList {
             current_node = current_node.next;
         }
         return current_node.value;
-    }//повертає елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    }
 
     public ImmutableList remove(int index) {
         if (index < 0) {
@@ -137,7 +133,7 @@ public class ImmutableLinkedList implements ImmutableList {
         current_node = current_node.next;
         this.copyNodes(current_node, new_node);
         return result;
-    }//видаляє елемент за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    }
 
     public ImmutableList set(int index, Object e) {
         if (index < 0) {
@@ -147,10 +143,9 @@ public class ImmutableLinkedList implements ImmutableList {
         ImmutableLinkedList result = new ImmutableLinkedList();
         result.head.value = current_node.value;
         Node new_node = result.head;
-        if(index == 0){
+        if (index == 0) {
             new_node.value = e;
-        }
-        else {
+        } else {
             for (int i = 0; i < index - 1; i++) {
                 if (current_node.next == null) {
                     throw new IndexOutOfBoundsException();
@@ -168,7 +163,7 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         this.copyNodes(current_node, new_node);
         return result;
-    }//змінює значення елементу за індексом, та кидає виключну ситуацію, якщо індекс виходить за межі колекції
+    }
 
     public int indexOf(Object e) {
         Node current_node = this.head;
@@ -184,7 +179,7 @@ public class ImmutableLinkedList implements ImmutableList {
             return index;
         }
         return -1;
-    }//шукає індекс елемента (повертає індекс першого який знайшов, або -1 у випадку відсутності)
+    }
 
     public int size() {
         Node current_node = this.head;
@@ -197,19 +192,19 @@ public class ImmutableLinkedList implements ImmutableList {
             current_node = current_node.next;
         }
         return size;
-    }//розмір колекції
+    }
 
     public ImmutableList clear() {
         return new ImmutableLinkedList();
-    }//очищує вміст колекції
+    }
 
     public boolean isEmpty() {
         return this.size() == 0;
-    }//якщо у колеції нема елементів то повертає true
+    }
 
     public Object[] toArray() {
-        if(this.head.value == null){
-            return new Object[] {};
+        if (this.head.value == null) {
+            return new Object[]{};
         }
         Object[] result = new Object[this.size()];
         Node current_node = this.head;
@@ -218,26 +213,26 @@ public class ImmutableLinkedList implements ImmutableList {
             current_node = current_node.next;
         }
         return result;
-    }//перетворює колекцію до масиву обєктів
+    }
 
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         Node current_node = this.head;
-        str += current_node.value.toString();
+        str.append(current_node.value.toString());
         current_node = current_node.next;
         while (current_node.next != null) {
-            str += "," + current_node.value.toString();
+            str.append(",").append(current_node.value.toString());
             current_node = current_node.next;
         }
-        str += "," + current_node.value.toString();
-        return str;
-    }//повертає рядок, де через кому відображаютсься елементи колекції
+        str.append(",").append(current_node.value.toString());
+        return str.toString();
+    }
 
-    public ImmutableLinkedList addFirst(Object e){
+    public ImmutableLinkedList addFirst(Object e) {
         ImmutableLinkedList result = new ImmutableLinkedList();
         result.head.value = e;
-        if(this.head.value != null){
+        if (this.head.value != null) {
             Node current_node = this.head;
             result.head.next = new Node(current_node.value);
             Node new_node = result.head.next;
@@ -246,36 +241,35 @@ public class ImmutableLinkedList implements ImmutableList {
         return result;
     }
 
-    public ImmutableLinkedList addLast(Object e){
+    public ImmutableLinkedList addLast(Object e) {
         ImmutableLinkedList result = new ImmutableLinkedList();
-        if(this.head.value != null) {
+        if (this.head.value != null) {
             Node current_node = this.head;
             Node new_node = result.head;
             new_node.value = this.head.value;
             new_node = this.copyNodes(current_node, new_node);
             new_node.next = new Node(e);
-        }
-        else{
+        } else {
             result.head.value = e;
         }
         return result;
     }
 
-    public Object getFirst(){
+    public Object getFirst() {
         return this.head.value;
     }
 
-    public Object getLast(){
+    public Object getLast() {
         Node current_node = this.head;
-        while(current_node.next != null){
+        while (current_node.next != null) {
             current_node = current_node.next;
         }
         return current_node.value;
     }
 
-    public ImmutableLinkedList removeFirst(){
+    public ImmutableLinkedList removeFirst() {
         ImmutableLinkedList result = new ImmutableLinkedList();
-        if(this.head.next == null) {
+        if (this.head.next == null) {
             return result;
         }
         Node current_node = this.head.next;
@@ -285,15 +279,15 @@ public class ImmutableLinkedList implements ImmutableList {
         return result;
     }
 
-    public ImmutableLinkedList removeLast(){
+    public ImmutableLinkedList removeLast() {
         ImmutableLinkedList result = new ImmutableLinkedList();
-        if(this.head.next == null){
+        if (this.head.next == null) {
             return result;
         }
         Node current_node = this.head;
         Node new_node = new Node(current_node.value);
         result.head = new_node;
-        for(int i = 0; i < this.size() - 2; i++){
+        for (int i = 0; i < this.size() - 2; i++) {
             current_node = current_node.next;
             new_node.next = new Node(current_node.value);
             new_node = new_node.next;
