@@ -39,7 +39,7 @@ public class ImmutableLinkedListTest {
         ImmutableList lst = new ImmutableLinkedList();
         lst = lst.add(1);
         lst = lst.add(2);
-        lst = lst.add(2, 3);
+        lst = lst.add(3, 3);
     }
 
     @Test

@@ -39,7 +39,7 @@ public class ImmutableArrayListTest {
         ImmutableList lst = new ImmutableArrayList();
         lst = lst.add(1);
         lst = lst.add(2);
-        lst = lst.add(2, 3);
+        lst = lst.add(3, 3);
     }
 
     @Test
