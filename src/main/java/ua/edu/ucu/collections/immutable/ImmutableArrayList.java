@@ -16,7 +16,7 @@ public final class ImmutableArrayList implements ImmutableList {
         this.length = obj_lst.length;
     }
 
-    public ImmutableList add(Object e) {
+    public ImmutableArrayList add(Object e) {
         Object[] new_list = new Object[this.length + 1];
         for (int i = 0; i < this.length; i++) {
             new_list[i] = this.lst[i];
@@ -25,8 +25,8 @@ public final class ImmutableArrayList implements ImmutableList {
         return new ImmutableArrayList(new_list);
     }
 
-    public ImmutableList add(int index, Object e) {
-        if (index >= this.length || index < 0) {
+    public ImmutableArrayList add(int index, Object e) {
+        if (index > this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object[] new_list = new Object[this.length + 1];
@@ -41,7 +41,7 @@ public final class ImmutableArrayList implements ImmutableList {
         return new ImmutableArrayList(new_list);
     }
 
-    public ImmutableList addAll(Object[] c) {
+    public ImmutableArrayList addAll(Object[] c) {
         Object[] new_list = new Object[this.length + c.length];
         for (int i = 0; i < this.length; i++) {
             new_list[i] = this.lst[i];
@@ -52,7 +52,7 @@ public final class ImmutableArrayList implements ImmutableList {
         return new ImmutableArrayList(new_list);
     }
 
-    public ImmutableList addAll(int index, Object[] c) {
+    public ImmutableArrayList addAll(int index, Object[] c) {
         if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -76,7 +76,7 @@ public final class ImmutableArrayList implements ImmutableList {
         return this.lst[index];
     }
 
-    public ImmutableList remove(int index) {
+    public ImmutableArrayList remove(int index) {
         if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -90,7 +90,7 @@ public final class ImmutableArrayList implements ImmutableList {
         return new ImmutableArrayList(new_list);
     }
 
-    public ImmutableList set(int index, Object e) {
+    public ImmutableArrayList set(int index, Object e) {
         if (index >= this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -101,7 +101,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     public int indexOf(Object e) {
         for (int i = 0; i < this.length; i++) {
-            if (this.lst[i] == e) {
+            if (e.equals(this.lst[i])) {
                 return i;
             }
         }
@@ -112,7 +112,7 @@ public final class ImmutableArrayList implements ImmutableList {
         return this.length;
     }
 
-    public ImmutableList clear() {
+    public ImmutableArrayList clear() {
         return new ImmutableArrayList();
     }
 

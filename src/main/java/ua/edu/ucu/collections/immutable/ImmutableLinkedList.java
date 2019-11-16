@@ -7,7 +7,7 @@ public class ImmutableLinkedList implements ImmutableList {
         this.head = new Node();
     }
 
-    public ImmutableList add(Object e) {
+    public ImmutableLinkedList add(Object e) {
         ImmutableLinkedList result = new ImmutableLinkedList();
         if (this.head.value == null) {
             result.head.value = e;
@@ -21,7 +21,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return result;
     }
 
-    public ImmutableList add(int index, Object e) {
+    public ImmutableLinkedList add(int index, Object e) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -43,9 +43,6 @@ public class ImmutableLinkedList implements ImmutableList {
                 new_node.next = new Node(current_node.value);
                 new_node = new_node.next;
             }
-            if (current_node.next == null) {
-                throw new IndexOutOfBoundsException();
-            }
             new_node.next = new Node(e);
             new_node = new_node.next;
             this.copyNodes(current_node, new_node);
@@ -54,7 +51,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
 
-    public ImmutableList addAll(Object[] c) {
+    public ImmutableLinkedList addAll(Object[] c) {
         ImmutableLinkedList result = new ImmutableLinkedList();
         if (this.head.value == null) {
             Node new_node = new Node();
@@ -70,7 +67,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return result;
     }
 
-    public ImmutableList addAll(int index, Object[] c) {
+    public ImmutableLinkedList addAll(int index, Object[] c) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -111,7 +108,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return current_node.value;
     }
 
-    public ImmutableList remove(int index) {
+    public ImmutableLinkedList remove(int index) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -135,7 +132,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return result;
     }
 
-    public ImmutableList set(int index, Object e) {
+    public ImmutableLinkedList set(int index, Object e) {
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -169,13 +166,13 @@ public class ImmutableLinkedList implements ImmutableList {
         Node current_node = this.head;
         int index = 0;
         while (current_node.next != null) {
-            if (current_node.value == e) {
+            if (current_node.value.equals(e)) {
                 return index;
             }
             index++;
             current_node = current_node.next;
         }
-        if (current_node.value == e) {
+        if (current_node.value.equals(e)) {
             return index;
         }
         return -1;
@@ -194,7 +191,7 @@ public class ImmutableLinkedList implements ImmutableList {
         return size;
     }
 
-    public ImmutableList clear() {
+    public ImmutableLinkedList clear() {
         return new ImmutableLinkedList();
     }
 
