@@ -17,43 +17,21 @@ public final class ImmutableArrayList implements ImmutableList {
     }
 
     public ImmutableArrayList add(Object e) {
-        Object[] new_list = new Object[this.length + 1];
-        for (int i = 0; i < this.length; i++) {
-            new_list[i] = this.lst[i];
-        }
-        new_list[this.length] = e;
-        return new ImmutableArrayList(new_list);
+        Object[] new_list = new Object[] {e};
+        return this.addAll(this.length, new_list);
     }
 
     public ImmutableArrayList add(int index, Object e) {
-        if (index > this.length || index < 0) {
-            throw new IndexOutOfBoundsException();
-        }
-        Object[] new_list = new Object[this.length + 1];
-        for (int i = 0; i < this.length; i++) {
-            if (i < index) {
-                new_list[i] = this.lst[i];
-            } else {
-                new_list[i + 1] = this.lst[i];
-            }
-        }
-        new_list[index] = e;
-        return new ImmutableArrayList(new_list);
+        Object[] new_list = new Object[] {e};
+        return this.addAll(index, new_list);
     }
 
     public ImmutableArrayList addAll(Object[] c) {
-        Object[] new_list = new Object[this.length + c.length];
-        for (int i = 0; i < this.length; i++) {
-            new_list[i] = this.lst[i];
-        }
-        for (int i = this.length; i < this.length + c.length; i++) {
-            new_list[i] = c[i - this.length];
-        }
-        return new ImmutableArrayList(new_list);
+        return this.addAll(this.length, c);
     }
 
     public ImmutableArrayList addAll(int index, Object[] c) {
-        if (index >= this.length || index < 0) {
+        if (index > this.length || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         Object[] new_list = new Object[this.length + c.length];
